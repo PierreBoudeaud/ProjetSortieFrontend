@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <label>Date du jour : 02/10/2018</label>
+  </div>
+  <div class="row">
+    <label>Participant : Kevin C.</label>
+  </div>
+  <div class="row">
+      <h3 class="mb-3">Filtrer les sorties</h3>
+  </div>
+  <form>
+    <div class="row">
+      <div class="col-md-5">
+          <div class="mb-3">
+            <label for="site">Site</label>
+            <select class="custom-select d-block w-100" id="site">
+              <option value="0">Choix...</option>
+              <option value = "{{s.id}}" *ngFor="let s of sites">{{s.nom}}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="sortie">Le nom de la sortie contient</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="sortie" placeholder="search">
+            </div>
+          </div>
+          <div class= "row">
+            <div class="col-md-6 mb-3">
+              <label for="inter-min">Entre</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inter-min" placeholder="dd/mm/yyyy">
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="inter-max">et</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inter-max" placeholder="dd/mm/yyyy">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="sortie-orga">
+          <label class="custom-control-label" for="sortie-orga">Sortie dont je suis l'organisateur/trice</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="sortie-insc">
+          <label class="custom-control-label" for="sortie-insc">Sorties auxquelles je suis inscrit/e</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="sortie-non-insc">
+          <label class="custom-control-label" for="sortie-non-insc">Sorties auxquelles je ne suis pas inscrit/e</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="sortie-passe">
+          <label class="custom-control-label" for="sortie-passe">Sortie passée</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Rechercher</button>
+      </div>
+    </div>
+  </form>
+  <form>
+    <table>
+
+    </table>
+  </form>
+  <div class="col-md-4">
+    <button class="btn btn-primary btn-lg btn-block" type="button" routerLink="creersortie">Créer une sortie</button>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container" *ngIf="participant">
+  <div class="row">
+    <div class="col-md-8 order-md-2 mb-4">
+      <h4 class="mb-3">Mon Profil</h4>
+      <form class="needs-validation" novalidate="">
+        <div class="mb-3">
+          <label for="pseudo">Pseudo</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" required [(ngModel)]="participant.pseudo" name="pseudo">
+            <div class="invalid-feedback" style="width: 100%;">
+              Ton pseudo est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="prenom">Prénom</label>
+          <input type="text" class="form-control" id="prenom" placeholder="" [(ngModel)]= "participant.prenom" name="prenom" required="">
+          <div class="invalid-feedback">
+            Ton prénom est obligatoire.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" placeholder="" [(ngModel)]= "participant.nom" name="nom" required="">
+          <div class="invalid-feedback">
+            Ton nom est obligatoire.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="telephone">Téléphone<span class="text-muted"> (Optionnel)</span></label>
+          <input type="tel" class="form-control" id="telephone" placeholder="" [(ngModel)]=  "participant.telephone" name="telephone">
+          <div class="invalid-feedback">
+            Renseigner un N° de téléphone valide.
+          </div>
+          </div>
+        <div class="mb-3">
+          <label for="mail">Email</label>
+          <input type="email" class="form-control" id="mail" placeholder="jean.dupont@exemple.com" [(ngModel)]="participant.mail" name="mail">
+          <div class="invalid-feedback">
+            Renseigner une adresse E-Mail valide.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password">Mot de passe</label>
+          <input type="password" class="form-control" id="password" required="">
+          <div class="invalid-feedback">
+            Veuillez entrer un mot de passe valide.
+          </div>
+        </div>
+        <div class="mb-3">
+            <label for="confPassword">Confirmation</label>
+            <input type="password" class="form-control" id="confPassword" required="">
+            <div class="invalid-feedback">
+              Veuillez indiquer un mot de passe identique.
+            </div>
+          </div>
+        <div class="mb-3">
+          <label for="site">Site de rattachement</label>
+          <select class="custom-select d-block w-100" id="site" required="" [(ngModel)]="participant.site.id" name="site" >
+            <option [value] = "s.id" *ngFor="let s of sites" [selected]="participant.site.id === s.id">{{s.nom}}</option>
+          </select>
+          <div class="invalid-feedback">
+            Veuillez choisir un site de rattachement
+          </div>
+        </div>
+        <hr class="mb-4">
+        <div class= "row">
+          <div class="col-md-6 mb-3">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="updateParticipant(participant)">Enregistrer</button>
+          </div>
+          <div class="col-md-6 mb-3">
+            <button class="btn btn-primary btn-lg btn-block" type="submit"(click)="getParticipant()">Annuler</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4 order-md-1">
+      <div class="row">
+        <img src="/assets/img/eddy_malou.jpg" class="img-circle" width="225">
+      </div>
+    </div>
+  </div>
+</div>

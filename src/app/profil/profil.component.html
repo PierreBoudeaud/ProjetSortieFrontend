@@ -1,0 +1,28 @@
+<div class="container" *ngIf="participant">
+  <div class="row">
+    <div class="col-md-8 order-md-2 mb-4">
+      <h4 class="mb-3">{{participant.pseudo}}</h4>
+      <div class="mb-3">
+        <label for="prenom">Prenom {{participant.prenom}}</label>
+      </div>
+      <div class="mb-3">
+        <label for="nom">Nom {{participant.nom}}</label>
+      </div>
+      <div class="mb-3">
+        <label for="telephone">Téléphone {{participant.telephone}}</label>
+      </div>
+      <div class="mb-3">
+        <label for="mail">Email {{participant.mail}}</label>
+      </div>
+      <div class="mb-3">
+        <label for="site">Site de rattachement {{participant.site.nom}}</label>
+      </div>
+    </div>
+    <div class="col-md-4 order-md-1">
+      <div class="row">
+        <img src="/assets/img/eddy_malou.jpg" class="img-circle" width="225">
+      </div>
+    </div>
+  </div>
+</div>
+
