@@ -4,6 +4,8 @@ import { Participant } from '../models/participant.model';
 import { SiteService } from '../services/site.service';
 import { Site } from '../models/site.model';
 import { Observable } from 'rxjs';
+import { Token } from '../models/token.model';
+import { TopMenuComponent } from '../top-menu-component/top-menu-component.component';
 
 @Component({
   selector: 'app-mon-profil',
@@ -13,15 +15,29 @@ import { Observable } from 'rxjs';
 export class MonProfilComponent implements OnInit {
 
   public participant: Participant;
+  public password1: string;
+  public password2: string;
+  public passwordIdentical: boolean;
   public sites: Site[];
-  constructor(private participantService: ParticipantService, private siteService: SiteService) { }
+  
+  constructor(private participantService: ParticipantService, private siteService: SiteService) {
+    this.resetForm();
+  }
+  
   ngOnInit() {
     this.getParticipant();
     this.getSite();
   }
 
+  private resetForm() {
+    this.password1 = "";
+    this.password2 = "";
+    this.passwordIdentical = true;
+  }
+
   getParticipant() {
-    this.participantService.getParticipant('2').subscribe(
+    const token: Token = JSON.parse(localStorage.getItem("token"));
+    this.participantService.getParticipant(token.participant.id.toString()).subscribe(
       data => {this.participant = data; console.log(data); },
       err => console.error(err),
       () => console.log('participant récupéré')
@@ -37,17 +53,24 @@ export class MonProfilComponent implements OnInit {
   }
 
   updateParticipant(participant) {
-    this.participantService.updateParticipant(participant).subscribe(
-      data => {
-        this.getParticipant();
-        console.log(data);
-        return true;
-      },
-      error => {
-        console.error('Erreur modification participant');
-        return Observable.throw(error);
-      }
-    );
+    this.passwordIdentical = this.password1 === this.password2;
+    if(this.passwordIdentical) {
+      this.participant.password = this.password1;
+      this.participantService.updateParticipant(participant).subscribe(
+        data => {
+          this.participant = data;
+          this.resetForm();
+          console.log(data);
+          TopMenuComponent.popToastSuccess('Sauvegarde terminé', 'Le participant à correctement été mis à jour');
+          return true;
+        },
+        error => {
+          console.error('Erreur modification participant');
+          TopMenuComponent.popToastError('Erreur sauvegarde participant', 'Une erreur est survenu pendant la sauvegarde du participant');
+          return Observable.throw(error);
+        }
+      );
+    }
   }
 
 }

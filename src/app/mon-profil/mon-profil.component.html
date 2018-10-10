@@ -42,18 +42,21 @@
         </div>
         <div class="mb-3">
           <label for="password">Mot de passe</label>
-          <input type="password" class="form-control" id="password" required="">
+          <input type="password" class="form-control" id="password" [(ngModel)]="password1" [ngModelOptions]="{standalone: true}" required="">
           <div class="invalid-feedback">
             Veuillez entrer un mot de passe valide.
+          </div>
+          <div *ngIf="!passwordIdentical" class="alert alert-danger" role="alert">
+              Les mots de passes ne sont pas identiques !
           </div>
         </div>
         <div class="mb-3">
             <label for="confPassword">Confirmation</label>
-            <input type="password" class="form-control" id="confPassword" required="">
+            <input type="password" class="form-control" [(ngModel)]="password2" [ngModelOptions]="{standalone: true}" id="confPassword" required="">
             <div class="invalid-feedback">
               Veuillez indiquer un mot de passe identique.
             </div>
-          </div>
+        </div>
         <div class="mb-3">
           <label for="site">Site de rattachement</label>
           <select class="custom-select d-block w-100" id="site" required="" [(ngModel)]="participant.site.id" name="site" >
@@ -76,7 +79,8 @@
     </div>
     <div class="col-md-4 order-md-1">
       <div class="row">
-        <img src="/assets/img/eddy_malou.jpg" class="img-circle" width="225">
+        <img *ngIf="1 === 0" src="/assets/img/eddy_malou.jpg" class="img-circle" width="225" height="225">
+        <img src="/assets/img/anonymous.png" class="img-circle" width="225" height="225">
       </div>
     </div>
   </div>
