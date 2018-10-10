@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,13 +17,19 @@ import { SiteService } from './services/site.service';
 import { ParticipantService } from './services/participant.service';
 import { ProfilComponent } from './profil/profil.component';
 import { CreationSortieComponent } from './creation-sortie/creation-sortie.component';
+import { AuthInterceptor } from './interceptors/authInterceptor';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { ResponseInterceptor } from './interceptors/responseInterceptor';
+import { SitesComponent } from './sites/sites.component';
+import { VilleService } from './services/ville.service';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: AccueilComponent},
   { path: 'accueil',  canActivate: [AuthGuard], component: AccueilComponent},
   { path: 'auth', component: ConnexionComponent},
   { path: 'monprofil', canActivate: [AuthGuard], component: MonProfilComponent},
-  { path: 'creersortie', canActivate: [AuthGuard], component: CreationSortieComponent}
+  { path: 'creersortie', canActivate: [AuthGuard], component: CreationSortieComponent},
+  { path: 'sites', canActivate: [AuthGuard], component: SitesComponent }
 
 ];
 
@@ -34,20 +41,26 @@ const appRoutes: Routes = [
     AccueilComponent,
     MonProfilComponent,
     ProfilComponent,
-    CreationSortieComponent
+    CreationSortieComponent,
+    SitesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToasterModule.forRoot()
   ],
   providers: [
     ConnexionService,
     AuthGuard,
     SiteService,
-    ParticipantService
+    ParticipantService,
+    ToasterService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

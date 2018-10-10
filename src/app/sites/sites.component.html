@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Site</th>
+    <th *ngIf="participant.administrateur">Actions</th>
+  </tr>
+  <tr *ngFor="let site of sites">
+    <td>{{ site.nom }}</td>
+    <td *ngIf="participant.administrateur"><button class="btn btn-outline-primary">Modifier</button> <button class="btn btn-outline-danger">Supprimer</button></td>
+  </tr>
+  <tr *ngIf="participant.administrateur">
+    <td><input placeholder="Rennes" [(ngModel)]="newSite.nom"></td>
+    <td><button class="btn btn-outline-success" (click)="addSite()" >Ajouter</button></td>
+  </tr>
+</table>
