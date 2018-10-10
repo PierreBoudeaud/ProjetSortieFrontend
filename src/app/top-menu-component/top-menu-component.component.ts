@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ConnexionService } from '../services/connexion.service';
 import {ToasterService} from 'angular2-toaster';
+import { Participant } from '../models/participant.model';
+import { Token } from '../models/token.model';
 
 @Component({
   selector: 'app-top-menu-component',
@@ -8,19 +10,30 @@ import {ToasterService} from 'angular2-toaster';
   templateUrl: './top-menu-component.component.html',
   styleUrls: ['./top-menu-component.component.css']
 })
-export class TopMenuComponent implements OnInit {
+export class TopMenuComponent {
   private static connexionService: ConnexionService;
   public static toasterService: ToasterService;
+  public participant: Participant;
+
 
   constructor(public auth: ConnexionService, private toasterService: ToasterService) {
     TopMenuComponent.toasterService = this.toasterService;
     TopMenuComponent.connexionService = this.auth;
+    const token: Token = JSON.parse(localStorage.getItem("token"));
+    this.participant = token.participant;
    }
 
   isAuth(): boolean {
     return ConnexionService.isAuth;
   }
 
+  logout() {
+    this.auth.signOut();
+  }
+
+  static logOut() {
+    TopMenuComponent.connexionService.signOut();
+  }
 
   public static popToastSuccess(title: string, body: string) {
     this.popToast('success', title, body);

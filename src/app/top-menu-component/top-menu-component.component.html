@@ -13,7 +13,13 @@
         <a class="nav-link" routerLink="monprofil">Mon Profil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">Se Déconnecter</a>
+        <a class="nav-link" (click)="logout()">Se Déconnecter</a>
+      </li>
+      <li class="nav-item" *ngIf="participant.administrateur">
+        <a class="nav-link" routerLink="villes">Villes</a>
+      </li>
+      <li class="nav-item" *ngIf="participant.administrateur">
+        <a class="nav-link" routerLink="sites">Sites</a>
       </li>
     </ul>
   </div>
