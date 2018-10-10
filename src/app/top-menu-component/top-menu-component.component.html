@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" *ngIf="isAuth()">
   <a class="navbar-brand" routerLink="accueil">EniSortir</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarSortir" aria-controls="navBarSortir" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,3 +18,5 @@
     </ul>
   </div>
 </nav>
+
+<toaster-container></toaster-container>
