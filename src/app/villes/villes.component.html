@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Ville</th>
+    <th>Code Postal</th>
+    <th *ngIf="participant.administrateur">Actions</th>
+  </tr>
+  <tr *ngFor="let ville of villes">
+    <td>{{ ville.nom }}</td>
+    <td>{{ ville.codePostal }}</td>
+    <td *ngIf="participant.administrateur"><button class="btn btn-outline-primary">Modifier</button> <button class="btn btn-outline-danger">Supprimer</button></td>
+  </tr>
+  <tr *ngIf="participant.administrateur">
+    <td><input placeholder="Rennes" [(ngModel)]="newVille.nom"></td>
+    <td><input placeholder="35000" [(ngModel)]="newVille.codePostal"></td>
+    <td><button class="btn btn-outline-success" (click)="addVille()" >Ajouter</button></td>
+  </tr>
+</table>

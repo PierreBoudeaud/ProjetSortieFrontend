@@ -20,6 +20,7 @@ import { CreationSortieComponent } from './creation-sortie/creation-sortie.compo
 import { AuthInterceptor } from './interceptors/authInterceptor';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { ResponseInterceptor } from './interceptors/responseInterceptor';
+import { VillesComponent } from './villes/villes.component';
 import { SitesComponent } from './sites/sites.component';
 import { VilleService } from './services/ville.service';
 
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'auth', component: ConnexionComponent},
   { path: 'monprofil', canActivate: [AuthGuard], component: MonProfilComponent},
   { path: 'creersortie', canActivate: [AuthGuard], component: CreationSortieComponent},
+  { path: 'villes', canActivate: [AuthGuard], component: VillesComponent },
   { path: 'sites', canActivate: [AuthGuard], component: SitesComponent }
 
 ];
@@ -42,6 +44,7 @@ const appRoutes: Routes = [
     MonProfilComponent,
     ProfilComponent,
     CreationSortieComponent,
+    VillesComponent,
     SitesComponent
   ],
   imports: [
@@ -58,6 +61,7 @@ const appRoutes: Routes = [
     AuthGuard,
     SiteService,
     ParticipantService,
+    VilleService,
     ToasterService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
