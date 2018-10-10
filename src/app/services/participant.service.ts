@@ -1,21 +1,29 @@
 import {Injectable} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Participant } from '../models/participant.model';
+import { PathService } from './path.service';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable()
 export class ParticipantService {
 
+    private static path: string = PathService.getAPIUrl() + 'participants';
+
     constructor(private http: HttpClient) {}
 
     getParticipants() {
-        return this.http.get<Participant[]>('http://10.43.101.21:8082/api/participants');
+        return this.http.get<Participant[]>(ParticipantService.path);
     }
 
-    getParticipant(id: String) {
-        return this.http.get<Participant>('http://10.43.101.21:8082/api/participants/' + id);
+    getParticipant(id: String): Observable<Participant> {
+        return this.http.get<Participant>(ParticipantService.path + "/" +  id);
     }
 
-    updateParticipant(participant: Participant) {
-        return this.http.put('http://10.43.101.21:8082/api/participants/' + participant.id, participant);
+    createParticipant(participant: Participant): Observable<Participant> {
+        return this.http.post<Participant>(ParticipantService.path, participant);
+    }
+
+    updateParticipant(participant: Participant): Observable<Participant> {
+        return this.http.put<Participant>(ParticipantService.path + "/" + + participant.id, participant);
     }
 }
