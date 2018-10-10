@@ -11,25 +11,46 @@ export class ConnexionComponent implements OnInit {
 
   authStatus: boolean;
 
-  constructor(private connexionService: ConnexionService, private router: Router) { }
+  credentials: any;
+
+  pseudo: string;
+
+  password: string;
+
+  remember: boolean;
+  
+
+  constructor(private connexionService: ConnexionService, private router: Router) {
+    this.cleanForm();
+   }
 
   ngOnInit() {
-    this.authStatus = this.connexionService.isAuth;
+    this.authStatus = ConnexionService.isAuth;
+  }
+
+  cleanForm() {
+    this.credentials = {
+      pseudo: '',
+      password: '',
+      remember: false
+    };
   }
 
   onSignIn() {
-    this.connexionService.signIn().then(
-      () => {
-        console.log('Sign in succesful');
-        this.authStatus = this.connexionService.isAuth;
-        this.router.navigate(['accueil']);
-      }
-    );
+    let email = "";
+    let pseudo = "";
+    if(this.credentials.pseudo.includes('@')){
+      email = this.credentials.pseudo;
+    } else {
+      pseudo = this.credentials.pseudo;
+    }
+
+    this.connexionService.signIn(this.credentials.password, email, pseudo, this.credentials.remember);
   }
 
   onSignOut() {
     this.connexionService.signOut();
-    this.authStatus = this.connexionService.isAuth;
+    this.authStatus = ConnexionService.isAuth;
   }
 
 }
