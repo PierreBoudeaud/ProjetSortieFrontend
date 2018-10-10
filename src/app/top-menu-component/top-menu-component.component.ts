@@ -13,23 +13,20 @@ import { Token } from '../models/token.model';
 export class TopMenuComponent {
   private static connexionService: ConnexionService;
   public static toasterService: ToasterService;
+  public static participant: Participant = new Participant();
+
   public participant: Participant;
 
 
   constructor(public auth: ConnexionService, private toasterService: ToasterService) {
     TopMenuComponent.toasterService = this.toasterService;
     TopMenuComponent.connexionService = this.auth;
-    const token: Token = JSON.parse(localStorage.getItem("token"));
-    this.participant = token.participant;
+    if (ConnexionService.isAuth) {
+      const token: Token = JSON.parse(localStorage.getItem('token'));
+      TopMenuComponent.participant = token.participant;
+    }
+    this.participant = TopMenuComponent.participant;
    }
-
-  isAuth(): boolean {
-    return ConnexionService.isAuth;
-  }
-
-  logout() {
-    this.auth.signOut();
-  }
 
   static logOut() {
     TopMenuComponent.connexionService.signOut();
@@ -47,4 +44,11 @@ export class TopMenuComponent {
     this.toasterService.pop(type, title, body);
   }
 
+  isAuth(): boolean {
+    return ConnexionService.isAuth;
+  }
+
+  logout() {
+    this.auth.signOut();
+  }
 }

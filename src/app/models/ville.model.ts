@@ -5,7 +5,7 @@ export class Ville {
 
     constructor() {
         this.id = 0;
-        this.nom = "";
-        this.codePostal = "";
+        this.nom = '';
+        this.codePostal = '';
     }
 }

@@ -1,8 +1,8 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from "@angular/common/http";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
-import { TopMenuComponent } from "../top-menu-component/top-menu-component.component";
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { TopMenuComponent } from '../top-menu-component/top-menu-component.component';
 
 export class ResponseInterceptor implements HttpInterceptor {
     constructor() {}

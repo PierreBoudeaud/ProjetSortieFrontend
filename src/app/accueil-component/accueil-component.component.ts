@@ -16,7 +16,7 @@ export class AccueilComponent implements OnInit {
   public sites: Site[];
 
   constructor(private siteService: SiteService) {
-    const token: Token = JSON.parse(localStorage.getItem("token"));
+    const token: Token = JSON.parse(localStorage.getItem('token'));
     this.participant = token.participant;
     this.today = new Date();
    }

@@ -1,4 +1,4 @@
-import { Participant } from "./participant.model";
+import { Participant } from './participant.model';
 
 export class Token {
     token: string;

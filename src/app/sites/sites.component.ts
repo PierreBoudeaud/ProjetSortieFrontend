@@ -19,7 +19,7 @@ export class SitesComponent {
   constructor(private siteService: SiteService) { 
     this.newSite = new Site();
     this.sites = [];
-    const token: Token = JSON.parse(localStorage.getItem("token"));
+    const token: Token = JSON.parse(localStorage.getItem('token'));
     this.participant = token.participant;
     this.getSites();
   }
@@ -36,7 +36,7 @@ export class SitesComponent {
     this.siteService.createSite(this.newSite).toPromise()
       .then(site => {
         this.sites.push(site);
-        this.newSite.nom = "";
+        this.newSite.nom = '';
       });
   }
 

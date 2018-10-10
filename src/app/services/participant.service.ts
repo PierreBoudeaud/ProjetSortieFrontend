@@ -16,7 +16,7 @@ export class ParticipantService {
     }
 
     getParticipant(id: String): Observable<Participant> {
-        return this.http.get<Participant>(ParticipantService.path + "/" +  id);
+        return this.http.get<Participant>(ParticipantService.path + '/' +  id);
     }
 
     createParticipant(participant: Participant): Observable<Participant> {
@@ -24,6 +24,6 @@ export class ParticipantService {
     }
 
     updateParticipant(participant: Participant): Observable<Participant> {
-        return this.http.put<Participant>(ParticipantService.path + "/" + + participant.id, participant);
+        return this.http.put<Participant>(ParticipantService.path + '/' + + participant.id, participant);
     }
 }

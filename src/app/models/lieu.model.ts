@@ -1,4 +1,4 @@
-import { Ville } from "./ville.model";
+import { Ville } from './ville.model';
 
 export class Lieu {
     id: number;

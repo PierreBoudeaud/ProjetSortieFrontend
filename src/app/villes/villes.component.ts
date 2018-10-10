@@ -19,7 +19,7 @@ export class VillesComponent {
   constructor(private villeService: VilleService) { 
     this.newVille = new Ville();
     this.villes = [];
-    const token: Token = JSON.parse(localStorage.getItem("token"));
+    const token: Token = JSON.parse(localStorage.getItem('token'));
     this.participant = token.participant;
     this.getVilles();
   }
@@ -36,8 +36,8 @@ export class VillesComponent {
     this.villeService.createVille(this.newVille).toPromise()
       .then(ville => {
         this.villes.push(ville);
-        this.newVille.nom = "";
-        this.newVille.codePostal = "";
+        this.newVille.nom = '';
+        this.newVille.codePostal = '';
       });
   }
 

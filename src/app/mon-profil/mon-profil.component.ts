@@ -30,13 +30,13 @@ export class MonProfilComponent implements OnInit {
   }
 
   private resetForm() {
-    this.password1 = "";
-    this.password2 = "";
+    this.password1 = '';
+    this.password2 = '';
     this.passwordIdentical = true;
   }
 
   getParticipant() {
-    const token: Token = JSON.parse(localStorage.getItem("token"));
+    const token: Token = JSON.parse(localStorage.getItem('token'));
     this.participantService.getParticipant(token.participant.id.toString()).subscribe(
       data => {this.participant = data; console.log(data); },
       err => console.error(err),

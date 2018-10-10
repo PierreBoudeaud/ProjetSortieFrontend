@@ -37,8 +37,8 @@ export class ConnexionComponent implements OnInit {
   }
 
   onSignIn() {
-    let email = "";
-    let pseudo = "";
+    let email = '';
+    let pseudo = '';
     if(this.credentials.pseudo.includes('@')){
       email = this.credentials.pseudo;
     } else {
