@@ -5,6 +5,7 @@ export class Participant {
     pseudo: string;
     nom: string;
     prenom: string;
+    password?: string;
     telephone?: string;
     mail: string;
     administrateur: boolean;
