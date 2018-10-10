@@ -9,7 +9,7 @@ import { Participant } from '../models/participant.model';
 export class CreationSortieComponent implements OnInit {
 
   public participant: Participant;
-  public lieus: any[];
+  public lieux: any[];
   public sortie;
   public villes: any[];
   constructor() { }

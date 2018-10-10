@@ -1,57 +1,59 @@
 <div class="container">
   <h4 class="mb-3">Créer une sortie</h4>
   <div class="row">
-    <form class="needs-validation" novalidate="">
+    <form class="needs-validation" novalidate>
+
       <div class="col-md-6 order-md-2 mb-4">
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="nom">Nom de la sortie</label>
           <input type="text" class="form-control" id="nom" required [(ngModel)]="sortie.nom" name="nom">
           <div class="invalid-feedback" style="width: 100%;">
             Le nom de la sortie est obligatoire.
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="datedebut">Date et heure de la sortie</label>
-          <input type="datetime" class="form-control" id="datedebut" placeholder="dd/mm/yyyy hh:mm" [(ngModel)]= "sortie.datedebut" name="datedebut" required>
+          <input type="datetime" class="form-control" id="datedebut" placeholder="dd/mm/yyyy hh:mm" [(ngModel)]="sortie.datedebut" name="datedebut" required>
           <div class="invalid-feedback">
             La date de début est obligatoire.
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="datecloture">Date limite d'inscription</label>
-          <input type="date" class="form-control" id="datecloture" placeholder="dd/mm/yyyy" [(ngModel)]= "sortie.datecloture" name="datecloture" required="">
+          <input type="date" class="form-control" id="datecloture" placeholder="dd/mm/yyyy" [(ngModel)]="sortie.datecloture" name="datecloture" required>
           <div class="invalid-feedback">
             La date limite d'inscription est obligatoire
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="nbinscriptions">Nombre de places</label>
-          <input type="number" class="form-control" id="nbinscriptions" [(ngModel)]=  "sortie.nbinscriptions" name="nbinscriptions">
+          <input type="number" class="form-control" id="nbinscriptions" [(ngModel)]="sortie.nbinscriptions" name="nbinscriptions">
           <div class="invalid-feedback">
             Indiquer le nombre maximum de participants
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="duree">Durée</label>
           <input type="number" class="form-control" id="duree" [(ngModel)]="sortie.duree" name="duree"><p> minutes</p>
           <div class="invalid-feedback">
             Renseigner une durée valide.
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="descriptioninfos">Description et infos</label>
-          <textarea class="form-control" id="descriptioninfos" [(ngModel)]="sortie.descriptioninfos">
+          <textarea class="form-control" id="descriptioninfos" [(ngModel)]="sortie.descriptioninfos"></textarea>
           <div class="invalid-feedback">
             Veuillez entrer une description valide
           </div>
         </div>
       </div>
+
       <div class="col-md-6 order-md-1">
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="site">Site organisateur</label>
           <input type="text" disabled="disabled" class="form-control" id="site" required [(ngModel)]="sortie.site" name="site" [value]="participant.site.name">
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="ville">Ville</label>
           <select class="custom-select d-block w-100" id="ville" required="" [(ngModel)]="sortie.lieu.ville.id" name="ville" >
             <option [value] = "v.id" *ngFor="let v of villes">{{v.nom}}</option>
@@ -60,31 +62,31 @@
             Veuillez choisir une la ville de l'évènement
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="lieu">Lieu</label>
-          <select class="custom-select d-block w-100" id="lieu" required="" [(ngModel)]="sortie.lieu.id" name="lieu" >
+          <select class="custom-select d-block w-100" id="lieu" required [(ngModel)]="sortie.lieu.id" name="lieu" >
             <option [value] = "l.id" *ngFor="let l of lieus" >{{l.nom}}</option>
           </select>
           <div class="invalid-feedback">
             Veuillez choisir un lieu
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="rue">Rue</label>
           <input type="text" disabled="disabled" class="form-control" id="rue" required [(ngModel)]="sortie.lieu.rue" name="rue" [value]="sortie.lieu.rue">
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="codepostal">Code postal</label>
-          <input type="text" disabled="disabled" class="form-control" id="codepostal" required [(ngModel)]="sortie.lieu.codepsotal" name="codepostal" [value]="sortie.lieu.codepsotal">
+          <input type="text" disabled="disabled" class="form-control" id="codepostal" required [(ngModel)]="sortie.lieu.codepostal" name="codepostal" [value]="sortie.lieu.codepostal">
         </div>
-        <div class="mb-3">
+        <div class="mb-1">
           <label for="latitude">Latitude</label>
           <input type="text" disabled="disabled" class="form-control" id="latitude" [(ngModel)]="sortie.lieu.latitude" name="latitude">
           <div class="invalid-feedback">
             Renseigner une latitude valide.
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-1">
           <label for="longitude">Longitude</label>
           <input type="text" disabled="disabled" class="form-control" id="longitude" [(ngModel)]="sortie.lieu.longitude" name="longitude">
           <div class="invalid-feedback">
@@ -94,14 +96,14 @@
       </div>
       <hr class="mb-6">
       <div class= "row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
           <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="createSortie(sortie)">Enregistrer</button>
         </div>
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
           <button class="btn btn-primary btn-lg btn-block" type="submit"(click)="publierSortie()">Publier la sortie</button>
         </div>
-        <div class="col-md-6 mb-3">
-          <button class="btn btn-primary btn-lg btn-block" type="submit"(click)="">Annuler</button>
+        <div class="col-md-4 mb-3">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Annuler</button>
         </div>
       </div>
     </form>
