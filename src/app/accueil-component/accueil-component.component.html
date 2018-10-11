@@ -86,7 +86,7 @@
           <td>{{ sortie.etat }}</td>
           <td>X</td>
           <td>{{ sortie.organisateur.pseudo }}</td>
-          <td><button class="btn btn-outline-primary">Afficher</button><button *ngIf="participant.id === sortie.organisateur.id" class="btn btn-outline-secondary">Modifier</button></td>
+          <td><button class="btn btn-outline-primary">Afficher</button><button *ngIf="participant.id === sortie.organisateur.id" class="btn btn-outline-secondary" routerLink="/sortie/{{sortie.id}}/update">Modifier</button></td>
         </tr>
       </table>
     </div>
