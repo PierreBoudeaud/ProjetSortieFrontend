@@ -85,8 +85,8 @@
           <td>X/{{ sortie.nbInscriptions }}</td>
           <td>{{ sortie.etat }}</td>
           <td>X</td>
-          <td>{{ sortie.organisateur.pseudo }}</td>
-          <td><button class="btn btn-outline-primary">Afficher</button><button *ngIf="participant.id === sortie.organisateur.id" class="btn btn-outline-secondary" routerLink="/sortie/{{sortie.id}}/update">Modifier</button></td>
+          <td><a routerLink="/profil/{{sortie.organisateur.id}}">{{sortie.organisateur.pseudo }}</a></td>
+          <td><button class="btn btn-outline-primary" routerLink="/sortie/{{sortie.id}}">Afficher</button><button *ngIf="participant.id === sortie.organisateur.id" class="btn btn-outline-secondary" routerLink="/sortie/{{sortie.id}}/update">Modifier</button><button class="btn btn-outline-success">Rejoindre</button></td>
         </tr>
       </table>
     </div>

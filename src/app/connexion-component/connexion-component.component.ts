@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConnexionService } from '../services/connexion.service';
 import { Router } from '@angular/router';
 import { TopMenuComponent } from '../top-menu-component/top-menu-component.component';
+import { SiteService } from '../services/site.service';
 
 @Component({
   selector: 'app-connexion-component',
@@ -14,12 +15,25 @@ export class ConnexionComponent implements OnInit {
 
   credentials: any;
 
-  constructor(private connexionService: ConnexionService, private router: Router) {
+  creationMode: boolean;
+
+  sites: Site[];
+
+  constructor(private connexionService: ConnexionService, private siteService: SiteService, private router: Router) {
     this.cleanForm();
+    this.creationMode = false;
    }
 
   ngOnInit() {
     this.authStatus = ConnexionService.isAuth;
+  }
+
+  connexionMode() {
+    this.creationMode = false;
+  }
+
+  inscriptionMode() {
+    this.creationMode = true;
   }
 
   cleanForm() {

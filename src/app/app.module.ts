@@ -35,9 +35,11 @@ const appRoutes: Routes = [
   { path: 'auth', component: ConnexionComponent},
   { path: 'monprofil', canActivate: [AuthGuard], component: MonProfilComponent},
   { path: 'creersortie', canActivate: [AuthGuard], component: CreationSortieComponent},
+  { path: 'sortie/:id', canActivate: [AuthGuard], component: AfficherSortieComponent },
   { path: 'sortie/:id/update', canActivate: [AuthGuard], component: CreationSortieComponent},
   { path: 'villes', canActivate: [AuthGuard], component: VillesComponent },
   { path: 'sites', canActivate: [AuthGuard], component: SitesComponent },
+  { path: 'profil/:id', canActivate: [AuthGuard], component: ProfilComponent },
   { path: 'participants', canActivate: [AuthGuard], component: ParticipantsComponent }
 
 ];
