@@ -77,10 +77,23 @@ export class CreationSortieComponent implements OnInit {
 
   getLieux() {
     this.lieuService.getLieux().subscribe(
-      data => {this.lieux = data; console.log(data); },
+      data => {this.lieux = data; console.log(data); console.log(this.lieux); },
       err => console.error(err),
       () => console.log('lieux réupérées')
     );
+  }
+
+  showDetailLieu(index) {
+    const lieu = this.lieux[index];
+    console.log(lieu);
+    this.lieu.id = lieu.id;
+    this.lieu.nom = lieu.nom;
+    this.lieu.ville.id = lieu.ville.id;
+    this.lieu.ville.nom = lieu.ville.nom;
+    this.lieu.ville.codePostal = lieu.ville.codePostal;
+    this.lieu.adresse = lieu.adresse;
+    this.lieu.latitude = lieu.latitude;
+    this.lieu.longitude = lieu.longitude;
   }
 
 }

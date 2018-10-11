@@ -1,9 +1,7 @@
 <div class="container">
   <h4 class="mb-3">Créer une sortie</h4>
   <div class="row">
-    <form class="needs-validation" novalidate>
-
-      <div class="col-md-6 order-md-2 mb-4">
+      <div class="col col-6">
         <div class="mb-2">
           <label for="nom">Nom de la sortie</label>
           <input type="text" class="form-control" id="nom" required [(ngModel)]="sortie.nom" name="nom">
@@ -48,7 +46,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 order-md-1 mb-4">
+      <div class="col col-6">
         <div class="mb-2">
           <label for="site">Site organisateur</label>
           <input type="text" disabled="disabled" class="form-control" id="site" required [(ngModel)]="participant.site.nom" name="site">
@@ -64,8 +62,9 @@
         </div>
         <div class="mb-2">
           <label for="lieu">Lieu</label>
-          <select class="custom-select d-block w-100" id="lieu" required [(ngModel)]="lieu.id" name="lieu" >
-            <option [value] = "l.id" *ngFor="let l of lieux" >{{l.nom}}</option>
+          <select class="custom-select d-block w-100" id="lieu" (change)="showDetailLieu($event.target.value)" required name="lieu" >
+            <option disabled>Choisir...</option>
+            <option [value] = "i" *ngFor="let l of lieux; let i = index" >{{l.nom}}</option>
           </select>
           <div class="invalid-feedback">
             Veuillez choisir un lieu
@@ -73,11 +72,11 @@
         </div>
         <div class="mb-2">
           <label for="rue">Rue</label>
-          <input type="text" disabled="disabled" class="form-control" id="rue" required [(ngModel)]="lieu.rue" name="rue">
+          <input type="text" disabled="disabled" class="form-control" id="rue" required [(ngModel)]="lieu.adresse" name="rue">
         </div>
         <div class="mb-2">
           <label for="codepostal">Code postal</label>
-          <input type="text" disabled="disabled" class="form-control" id="codepostal" required [(ngModel)]="lieu.codepostal" name="codepostal">
+          <input type="text" disabled="disabled" class="form-control" id="codepostal" required [(ngModel)]="lieu.ville.codePostal" name="codepostal">
         </div>
         <div class="mb-1">
           <label for="latitude">Latitude</label>
@@ -94,18 +93,17 @@
           </div>
         </div>
       </div>
-      <hr class="mb-6">
+  </div>
+  <hr class="mb-6">
       <div class= "row">
         <div class="col-md-4 mb-3">
           <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="createSortie(sortie)">Enregistrer</button>
         </div>
         <div class="col-md-4 mb-3">
-          <button class="btn btn-primary btn-lg btn-block" type="submit"(click)="publierSortie()">Publier la sortie</button>
+          <button class="btn btn-primary btn-lg btn-block" type="submit" disabled>Publier la sortie</button>
         </div>
         <div class="col-md-4 mb-3">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Annuler</button>
+          <button class="btn btn-primary btn-lg btn-block" type="submit" routerLink="/accueil">Annuler</button>
         </div>
       </div>
-    </form>
-  </div>
 </div>
