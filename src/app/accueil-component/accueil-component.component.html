@@ -82,11 +82,11 @@
           <td>{{ sortie.nom }}</td>
           <td>{{ sortie.dateDebut | date:'dd/MM/yyyy H:mm' }}</td>
           <td>{{ sortie.dateCloture | date:'dd/MM/yyyy' }}</td>
-          <td>8/{{ sortie.nbInscriptions }}</td>
+          <td>X/{{ sortie.nbInscriptions }}</td>
           <td>{{ sortie.etat }}</td>
           <td>X</td>
           <td>{{ sortie.organisateur.pseudo }}</td>
-          <td>Afficher</td>
+          <td><button class="btn btn-outline-primary">Afficher</button><button *ngIf="participant.id === sortie.organisateur.id" class="btn btn-outline-secondary">Modifier</button></td>
         </tr>
       </table>
     </div>
