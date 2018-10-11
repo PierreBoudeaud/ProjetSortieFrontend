@@ -94,7 +94,7 @@
             <div class="mb-3">
               <label for="site">Site de rattachement</label>
               <select class="custom-select d-block w-100" id="site" required="" [(ngModel)]="participant.site.id" name="site">
-                <option [value]="s.id" *ngFor="let s of sites" [selected]="participant.site.id === s.id">{{s.nom}}</option>
+                <option [value]="s.id" *ngFor="let s of sites">{{s.nom}}</option>
               </select>
               <div class="invalid-feedback">
                 Veuillez choisir un site de rattachement
@@ -103,10 +103,10 @@
             <hr class="mb-4">
             <div class="row">
               <div class="col-md-6 mb-3">
-                <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="updateParticipant(participant)">Enregistrer</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="createParticipant(participant)">Enregistrer</button>
               </div>
               <div class="col-md-6 mb-3">
-                <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="getParticipant()">Annuler</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="connexionMode()">Annuler</button>
               </div>
             </div>
           </form>

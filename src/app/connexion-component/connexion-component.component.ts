@@ -3,6 +3,10 @@ import { ConnexionService } from '../services/connexion.service';
 import { Router } from '@angular/router';
 import { TopMenuComponent } from '../top-menu-component/top-menu-component.component';
 import { SiteService } from '../services/site.service';
+import { Site } from '../models/site.model';
+import { Participant } from '../models/participant.model';
+import { ParticipantService } from '../services/participant.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-connexion-component',
@@ -12,20 +16,45 @@ import { SiteService } from '../services/site.service';
 export class ConnexionComponent implements OnInit {
 
   authStatus: boolean;
-
+  participant: Participant;
   credentials: any;
 
   creationMode: boolean;
 
   sites: Site[];
 
-  constructor(private connexionService: ConnexionService, private siteService: SiteService, private router: Router) {
+  constructor(private connexionService: ConnexionService, private siteService: SiteService,
+    private participantService: ParticipantService, private router: Router) {
     this.cleanForm();
     this.creationMode = false;
    }
 
   ngOnInit() {
     this.authStatus = ConnexionService.isAuth;
+  }
+
+  getSite() {
+    this.siteService.getSites().subscribe(
+      data => {this.sites = data; console.log(data); },
+      err => console.error(err),
+      () => console.log('sites récupérés')
+    );
+  }
+
+  createParticipant(participant) {
+    this.participantService.createParticipant(participant).subscribe(
+      data => {
+        this.participant = data;
+        console.log(data);
+        TopMenuComponent.popToastSuccess('Sauvegarde terminée', 'Le participant a été créée');
+        return true;
+      },
+      error => {
+        console.error('Erreur création sortie');
+        TopMenuComponent.popToastError('Erreur sauvegarde Participant', 'Une erreur est survenu pendant la sauvegarde de la sortie');
+        return Observable.throw(error);
+      }
+    );
   }
 
   connexionMode() {
