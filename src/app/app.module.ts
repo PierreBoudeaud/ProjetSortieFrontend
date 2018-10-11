@@ -23,6 +23,7 @@ import { ResponseInterceptor } from './interceptors/responseInterceptor';
 import { VillesComponent } from './villes/villes.component';
 import { SitesComponent } from './sites/sites.component';
 import { VilleService } from './services/ville.service';
+import { SortieService } from './services/sortie.service';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: AccueilComponent},
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     SiteService,
     ParticipantService,
     VilleService,
+    SortieService,
     ToasterService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }

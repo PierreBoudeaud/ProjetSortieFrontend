@@ -7,7 +7,7 @@ import { Lieu } from '../models/lieu.model';
 @Injectable()
 export class LieuService {
 
-    private static path: string = PathService.getAPIUrl() + 'sites';
+    private static path: string = PathService.getAPIUrl() + 'lieux';
 
     constructor(private http: HttpClient) {}
 

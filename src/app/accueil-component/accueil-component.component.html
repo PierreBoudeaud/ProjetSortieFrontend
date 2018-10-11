@@ -78,14 +78,14 @@
           <th>Organisateur</th>
           <th>Actions</th>
         </tr>
-        <tr>
-          <td>Philo</td>
-          <td>19/07/2018 23:45</td>
-          <td>19/07/2018</td>
-          <td>8/8</td>
-          <td>En cours</td>
+        <tr *ngFor="let sortie of sorties">
+          <td>{{ sortie.nom }}</td>
+          <td>{{ sortie.dateDebut }}</td>
+          <td>{{ sortie.dateCloture }}</td>
+          <td>8/{{ sortie.nbInscriptions }}</td>
+          <td>{{ sortie.etat }}</td>
           <td>X</td>
-          <td>Spinoz A.</td>
+          <td>{{ sortie.organisateur.pseudo }}</td>
           <td>Afficher</td>
         </tr>
       </table>
