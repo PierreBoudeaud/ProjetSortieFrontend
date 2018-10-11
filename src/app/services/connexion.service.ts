@@ -24,12 +24,7 @@ export class ConnexionService {
 
       let headers = new HttpHeaders();
       headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      this.https.post<Token>(ConnexionService.path, params, {headers: headers}).toPromise().then(data => {
-        localStorage.setItem('token', JSON.stringify(data));
-        ConnexionService.isAuth = true;
-        TopMenuComponent.participant.copy(data.participant);
-        this.router.navigate(['/accueil']);
-      });
+      return this.https.post<Token>(ConnexionService.path, params, {headers: headers});
     }
 
     signOut() {

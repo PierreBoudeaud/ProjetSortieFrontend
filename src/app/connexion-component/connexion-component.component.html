@@ -11,6 +11,9 @@
         <input type="checkbox" [checked]="credentials.remember"> Se souvenir de moi
       </label>
     </div>
+    <div style="cursor: pointer" *ngIf="credentials.error" (click)="switchStateError()" class="alert alert-danger" role="alert">
+      Votre identifiant ou votre mot de passe est incorrect !
+    </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSignIn()">Se Connecter</button>
     <p class="mt-5 mb-3 text-muted">© 2018-2019</p>
   </form>

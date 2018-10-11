@@ -19,9 +19,11 @@ export class MonProfilComponent implements OnInit {
   public password2: string;
   public passwordIdentical: boolean;
   public sites: Site[];
+
   constructor(private participantService: ParticipantService, private siteService: SiteService) {
     this.resetForm();
   }
+
   ngOnInit() {
     this.getParticipant();
     this.getSite();
