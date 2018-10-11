@@ -12,6 +12,12 @@ export class Participant {
     actif: boolean;
     site: Site;
 
+    constructor() {
+        this.administrateur = false;
+        this.site = new Site();
+        this.actif = true;
+    }
+
     copy(participant: Participant) {
         this.id = participant.id;
         this.pseudo = participant.pseudo;

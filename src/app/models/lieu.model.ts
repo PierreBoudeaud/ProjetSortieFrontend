@@ -7,4 +7,8 @@ export class Lieu {
     latitude: number;
     longitude: number;
     ville: Ville;
+
+    constructor() {
+        this.ville = new Ville();
+    }
 }
