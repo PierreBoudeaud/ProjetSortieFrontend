@@ -80,8 +80,8 @@
         </tr>
         <tr *ngFor="let sortie of sorties">
           <td>{{ sortie.nom }}</td>
-          <td>{{ sortie.dateDebut }}</td>
-          <td>{{ sortie.dateCloture }}</td>
+          <td>{{ sortie.dateDebut | date:'dd/MM/yyyy H:mm' }}</td>
+          <td>{{ sortie.dateCloture | date:'dd/MM/yyyy' }}</td>
           <td>8/{{ sortie.nbInscriptions }}</td>
           <td>{{ sortie.etat }}</td>
           <td>X</td>
