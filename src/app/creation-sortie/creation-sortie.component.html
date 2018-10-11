@@ -53,8 +53,8 @@
         </div>
         <div class="mb-2">
           <label for="ville">Ville</label>
-          <select class="custom-select d-block w-100" id="ville" required="" name="ville">
-            <option [value] = "v.id" *ngFor="let v of villes">{{v.nom}}</option>
+          <select class="custom-select d-block w-100" id="ville" required="" (change)="changeVille($event.target.value)" [(ngModel)]="villeIndex" name="ville">
+            <option [value] = "i" *ngFor="let v of villes; let i = index">{{v.nom}}</option>
           </select>
           <div class="invalid-feedback">
             Veuillez choisir une la ville de l'évènement
@@ -62,7 +62,7 @@
         </div>
         <div class="mb-2">
           <label for="lieu">Lieu</label>
-          <select class="custom-select d-block w-100" id="lieu" (change)="showDetailLieu($event.target.value)" required name="lieu" >
+          <select class="custom-select d-block w-100" id="lieu" (change)="showDetailLieu($event.target.value)" [(ngModel)]="lieuIndex" required name="lieu" >
             <option disabled>Choisir...</option>
             <option [value] = "i" *ngFor="let l of lieux; let i = index" >{{l.nom}}</option>
           </select>
