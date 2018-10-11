@@ -24,6 +24,7 @@ import { VillesComponent } from './villes/villes.component';
 import { SitesComponent } from './sites/sites.component';
 import { VilleService } from './services/ville.service';
 import { SortieService } from './services/sortie.service';
+import { LieuService } from './services/lieu.service';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: AccueilComponent},
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
     ParticipantService,
     VilleService,
     SortieService,
+    LieuService,
     ToasterService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }

@@ -19,11 +19,9 @@ export class MonProfilComponent implements OnInit {
   public password2: string;
   public passwordIdentical: boolean;
   public sites: Site[];
-  
   constructor(private participantService: ParticipantService, private siteService: SiteService) {
     this.resetForm();
   }
-  
   ngOnInit() {
     this.getParticipant();
     this.getSite();
@@ -54,14 +52,14 @@ export class MonProfilComponent implements OnInit {
 
   updateParticipant(participant) {
     this.passwordIdentical = this.password1 === this.password2;
-    if(this.passwordIdentical) {
+    if (this.passwordIdentical) {
       this.participant.password = this.password1;
       this.participantService.updateParticipant(participant).subscribe(
         data => {
           this.participant = data;
           this.resetForm();
           console.log(data);
-          TopMenuComponent.popToastSuccess('Sauvegarde terminé', 'Le participant à correctement été mis à jour');
+          TopMenuComponent.popToastSuccess('Sauvegarde terminé', 'Le participant a correctement été mis à jour');
           return true;
         },
         error => {
