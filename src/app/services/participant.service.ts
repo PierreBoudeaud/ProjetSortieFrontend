@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Participant } from '../models/participant.model';
 import { PathService } from './path.service';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ParticipantService {

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PathService } from './path.service';
 import { Ville } from '../models/ville.model';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class VilleService {
