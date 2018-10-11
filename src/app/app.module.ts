@@ -23,6 +23,7 @@ import { ResponseInterceptor } from './interceptors/responseInterceptor';
 import { VillesComponent } from './villes/villes.component';
 import { SitesComponent } from './sites/sites.component';
 import { VilleService } from './services/ville.service';
+import { ParticipantsComponent } from './participants/participants.component';
 import { SortieService } from './services/sortie.service';
 import { LieuService } from './services/lieu.service';
 
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
   { path: 'monprofil', canActivate: [AuthGuard], component: MonProfilComponent},
   { path: 'creersortie', canActivate: [AuthGuard], component: CreationSortieComponent},
   { path: 'villes', canActivate: [AuthGuard], component: VillesComponent },
-  { path: 'sites', canActivate: [AuthGuard], component: SitesComponent }
+  { path: 'sites', canActivate: [AuthGuard], component: SitesComponent },
+  { path: 'participants', canActivate: [AuthGuard], component: ParticipantsComponent }
 
 ];
 
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     ProfilComponent,
     CreationSortieComponent,
     VillesComponent,
-    SitesComponent
+    SitesComponent,
+    ParticipantsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <tr>
+    <th>Pseudo</th>
+    <th>Email</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Rôle</th>
+  </tr>
+  <tr *ngFor="let participant of participants">
+    <td>{{ participant.pseudo }}</td>
+    <td>{{ participant.mail }}</td>
+    <td>{{ participant.nom }}</td>
+    <td>{{ participant.prenom }}</td>
+    <td><span *ngIf="!participant.administrateur" class="badge badge-secondary">Utilisateur</span><span *ngIf="participant.administrateur" class="badge badge-danger">Administrateur</span></td>
+  </tr>
+</table>
