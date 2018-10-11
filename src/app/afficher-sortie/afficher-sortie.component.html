@@ -1,0 +1,68 @@
+<div class="container">
+  <h4 class="mb-3">Afficher une sortie</h4>
+  <div class="row">
+      <div class="col col-6">
+        <div class="mb-2">
+          <label for="nom">Nom de la sortie</label>
+          <input type="text" class="form-control" id="nom" required [(ngModel)]="sortie.nom" name="nom" disabled="disabled">>
+        </div>
+        <div class="mb-2">
+          <label for="datedebut">Date et heure de la sortie</label>
+          <input type="datetime-local" class="form-control" id="datedebut" placeholder="dd/mm/yyyy hh:mm" [(ngModel)]="sortie.dateDebut" name="datedebut" required disabled="disabled">
+        </div>
+        <div class="mb-2">
+          <label for="datecloture">Date limite d'inscription</label>
+          <input type="date" class="form-control" id="datecloture" placeholder="dd/mm/yyyy" [(ngModel)]="sortie.dateCloture" name="datecloture" required disabled="disabled">
+        </div>
+        <div class="mb-2">
+          <label for="nbinscriptions">Nombre de places</label>
+          <input type="number" class="form-control" id="nbinscriptions" [(ngModel)]="sortie.nbInscriptions" name="nbinscriptions" disabled="disabled">
+        </div>
+        <div class="mb-2">
+          <label for="duree">Durée</label>
+          <input type="number" class="form-control" id="duree" [(ngModel)]="sortie.duree" name="duree" disabled="disabled"><p> minutes</p>
+        </div>
+        <div class="mb-2">
+          <label for="descriptioninfos">Description et infos</label>
+          <textarea class="form-control" id="descriptioninfos" [(ngModel)]="sortie.description" name="descriptioninfos" disabled="disabled"></textarea>
+        </div>
+      </div>
+
+      <div class="col col-6">
+        <div class="mb-2">
+          <label for="site">Site organisateur</label>
+          <input type="text" disabled="disabled" class="form-control" id="site" required [(ngModel)]="participant.site.nom" name="site">
+        </div>
+        <div class="mb-2">
+          <label for="ville">Ville</label>
+          <input type="text" disabled="disabled" class="form-control" id="ville" required [(ngModel)]="sortie.lieu.ville.nom" name="ville">
+        </div>
+        <div class="mb-2">
+          <label for="lieu">Lieu</label>
+          <input type="text" disabled="disabled" class="form-control" id="lieu" required [(ngModel)]="sortie.lieu.nom" name="lieu">
+        </div>
+        <div class="mb-2">
+          <label for="rue">Rue</label>
+          <input type="text" disabled="disabled" class="form-control" id="rue" required [(ngModel)]="sortie.lieu.adresse" name="rue">
+        </div>
+        <div class="mb-2">
+          <label for="codepostal">Code postal</label>
+          <input type="text" disabled="disabled" class="form-control" id="codepostal" required [(ngModel)]="sortie.lieu.ville.codePostal" name="codepostal">
+        </div>
+        <div class="mb-1">
+          <label for="latitude">Latitude</label>
+          <input type="text" disabled="disabled" class="form-control" id="latitude" [(ngModel)]="sortie.lieu.latitude" name="latitude">
+        </div>
+        <div class="mb-1">
+          <label for="longitude">Longitude</label>
+          <input type="text" disabled="disabled" class="form-control" id="longitude" [(ngModel)]="sortie.lieu.longitude" name="longitude">
+        </div>
+      </div>
+  </div>
+  <hr class="mb-6">
+      <div class= "row">
+        <div class="col col-12">
+         <h5>Liste des participants inscrits</h5>
+        </div>
+      </div>
+</div>

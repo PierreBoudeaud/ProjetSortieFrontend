@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './top-menu-component/top-menu-component.component';
@@ -26,6 +27,7 @@ import { VilleService } from './services/ville.service';
 import { ParticipantsComponent } from './participants/participants.component';
 import { SortieService } from './services/sortie.service';
 import { LieuService } from './services/lieu.service';
+import { AfficherSortieComponent } from './afficher-sortie/afficher-sortie.component';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: AccueilComponent},
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     CreationSortieComponent,
     VillesComponent,
     SitesComponent,
-    ParticipantsComponent
+    ParticipantsComponent,
+    AfficherSortieComponent
   ],
   imports: [
     BrowserModule,
