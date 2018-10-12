@@ -6,6 +6,6 @@ export class PathService {
     constructor() {}
 
     static getAPIUrl() {
-        return 'http://10.43.101.21:8082/api/';
+        return 'http://10.43.0.254:8082/api/';
     }
 }

@@ -31,6 +31,8 @@ export class ConnexionComponent implements OnInit {
 
   ngOnInit() {
     this.authStatus = ConnexionService.isAuth;
+    this.participant = new Participant();
+    this.getSite();
   }
 
   getSite() {
@@ -50,7 +52,7 @@ export class ConnexionComponent implements OnInit {
         return true;
       },
       error => {
-        console.error('Erreur création sortie');
+        console.error('Erreur création participant');
         TopMenuComponent.popToastError('Erreur sauvegarde Participant', 'Une erreur est survenu pendant la sauvegarde de la sortie');
         return Observable.throw(error);
       }

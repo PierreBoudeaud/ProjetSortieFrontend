@@ -7,7 +7,10 @@ import { Token } from '../models/token.model';
 export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let authReq;
-        if (!(req.url.includes('/api/session') && req.method === 'POST')) {
+        console.log(req.url);
+        if (!(req.url.includes('/api/session') && req.method === 'POST')
+            && !(req.url.includes('/api/participants') && req.method === 'POST')
+            && !(req.url.includes('/api/sites') && req.method === 'GET')) {
             const token: Token = JSON.parse(localStorage.getItem('token'));
             let headers = req.headers.append('X-Authorization', token.token);
             headers = headers.append('Content-Type', 'application/json');
